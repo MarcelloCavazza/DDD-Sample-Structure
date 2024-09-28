@@ -14,6 +14,13 @@ namespace DDD.Data.Core
             _context = context;
         }
 
+        public async Task Delete(T entity, bool saveChanges = true)
+        {
+            _context.Set<T>().Remove(entity);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<T?> Get(Guid id, bool includeDeleted = false)
         {
             return await _context.Set<T>()
@@ -37,6 +44,22 @@ namespace DDD.Data.Core
                                  .Where(p => Ids.Contains(p.Id) && 
                                              p.Deleted == includeDeleted)
                                  .ToListAsync();
+        }
+
+        public async Task Save(T entity, bool saveChanges = true)
+        {
+            await _context.Set<T>().AddAsync(entity);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<T> Update(T entity, bool saveChanges = true)
+        {
+            _context.Set<T>().Update(entity);
+
+            await _context.SaveChangesAsync();
+
+            return entity;
         }
     }
 }

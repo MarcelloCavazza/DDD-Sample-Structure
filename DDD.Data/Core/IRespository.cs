@@ -11,10 +11,10 @@ namespace DDD.Data.Core
 
         Task<List<T>> GetList(IEnumerable<Guid> Ids, bool includeDeleted = false);
 
-        Task Save(T entity);
+        Task Save(T entity, bool saveChanges = true);
 
-        Task<T> Update(T entity);
+        Task<T> Update(T entity, bool saveChanges = true);
 
-        Task Delete(T entity);
+        Task Delete(T entity, bool saveChanges = true);
     }
 }
