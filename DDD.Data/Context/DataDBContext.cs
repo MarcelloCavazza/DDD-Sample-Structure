@@ -12,6 +12,8 @@ namespace DDD.Data.Context
             base.OnConfiguring(optionsBuilder);
         }
 
+        public DataDBContext(DbContextOptions<DataDBContext> options) : base(options) { }
+
         public DbSet<Product> Products { get; set; }
     }
 }

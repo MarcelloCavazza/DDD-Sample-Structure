@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Data.Core
 {
-    public class Repository<T> : IRespository<T>
+    public class Repository<T> : IRepository<T>
         where T : PersistentData
     {
         private readonly DataDBContext _context;

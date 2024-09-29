@@ -2,7 +2,7 @@
 
 namespace DDD.Data.Core
 {
-    public interface IRespository<T>
+    public interface IRepository<T>
         where T : PersistentData
     {
         Task<T?> Get(Guid id, bool includeDeleted = false);
